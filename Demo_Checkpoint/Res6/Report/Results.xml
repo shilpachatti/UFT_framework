@@ -1,0 +1,664 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="Micro Focus Unified Functional Testing" productVer="14.50" os="" host="LIN59018328"><DocLocation><![CDATA[C:\Users\SHCHATTI\Documents\Unified Functional Testing\Demo_Checkpoint]]></DocLocation></General>
+<Doc rID="T1"   productName= "Micro Focus Unified Functional Testing"  >
+<DName><![CDATA[Demo_Checkpoint]]></DName>
+<Res><![CDATA[Res6]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[login]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[07-02-2023 - 12:53:50]]></Time>
+<TimeTick>1675754630</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["john"]]></Details>
+<Time><![CDATA[07-02-2023 - 12:53:50]]></Time>
+<TimeTick>1675754630</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="13" Source="login" SourceLine="0" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["63e1faf5b511776d272c"]]></Details>
+<Time><![CDATA[07-02-2023 - 12:53:50]]></Time>
+<TimeTick>1675754630</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="15" Source="login" SourceLine="1" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-02-2023 - 12:53:50]]></Time>
+<TimeTick>1675754630</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="17" Source="login" SourceLine="2" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<HtmlStep rID="T9">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Checkpoint "Micro Focus MyFlight Sample Application": </span><span class="FailedHigh">Failed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 07-02-2023 - 12:54:00</span></td></tr>
+	<tr><td height=5></td></tr>
+<tr><td><span class="text"><b>Checkpoint Timeout</b>: Waited 10 seconds out of a possible 10 seconds</span></td></tr>	
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Text Checkpoint: captured </span><span  class="Failed">"^ Micro Focus MyFlight Sample Application
+BOOK FLIGHT	SEARCH ORDER
+London
+Paris
+08-02-2023
+Class
+Economy
+Tickets
+v	1	V
+FIND FLIGHTS
+Seattle to San Francisco,
+all inclusive
+$99"</span><span  class="text"></span><span class="text">, expected </span><span  class="Passed">"john smitch"</span><span  class="text"><br>
+</span><span  class="text">Match case: ON<br>
+</span><span  class="text">Exact match: ON<br>
+</span><span  class="text">Ignore spaces: ON</span></body></html>]]></HTML>
+<TimeTick>1675754640</TimeTick>
+<NodeArgs eType="Verification" icon="5" nRep="18" status="Failed" Source="login" SourceLine="3" >
+<Disp><![CDATA[Checkpoint "Micro Focus MyFlight Sample Application"]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf1.xml]]></Path>
+<ASHilite><![CDATA[5772126]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[John Smith.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[242, 76]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:01]]></Time>
+<TimeTick>1675754641</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="20" Source="login" SourceLine="4" >
+<Disp><![CDATA[John Smith.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[John Smith.DblClick]]></Obj>
+<Details plainTxt="False" ><![CDATA[242, 76]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:01]]></Time>
+<TimeTick>1675754641</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="22" Source="login" SourceLine="5" >
+<Disp><![CDATA[John Smith.DblClick]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[54, 0]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="24" Source="login" SourceLine="6" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[-564, 94]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="26" Source="login" SourceLine="7" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="12" status="Failed" Source="login" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[Session Invite - V&V Automatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Session Invite - V&V Automatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="31" Source="login" SourceLine="8" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="34" Source="login" SourceLine="9" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="37" Source="login" SourceLine="10" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="40" Source="login" SourceLine="11" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="43" Source="login" SourceLine="12" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="46" Source="login" SourceLine="13" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="49" Source="login" SourceLine="14" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="30" Source="login" SourceLine="8" >
+<Disp><![CDATA[Session Invite - V&V Automatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="9" nRep="29" Source="login" SourceLine="8" >
+<Disp><![CDATA[Session Invite - V&V Automatio]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[651, 0]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:02]]></Time>
+<TimeTick>1675754642</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="52" Source="login" SourceLine="15" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[252, 4]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="54" Source="login" SourceLine="16" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[141, 0]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="56" Source="login" SourceLine="17" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[-495, 176]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="58" Source="login" SourceLine="18" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="51" Source="login" SourceLine="15" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[Session Invite - V&V Automatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[Session Invite - V&V Automatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="63" Source="login" SourceLine="19" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="66" Source="login" SourceLine="20" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="69" Source="login" SourceLine="21" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="72" Source="login" SourceLine="22" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="75" Source="login" SourceLine="23" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="78" Source="login" SourceLine="24" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="81" Source="login" SourceLine="25" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[Player controls.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:03]]></Time>
+<TimeTick>1675754643</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="84" Source="login" SourceLine="26" >
+<Disp><![CDATA[Player controls.Select]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="10" nRep="62" Source="login" SourceLine="19" >
+<Disp><![CDATA[Session Invite - V&V Automatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="9" nRep="61" Source="login" SourceLine="19" >
+<Disp><![CDATA[Session Invite - V&V Automatio]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:04]]></Time>
+<TimeTick>1675754644</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[-10, 130]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:04]]></Time>
+<TimeTick>1675754644</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="87" Source="login" SourceLine="27" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:04]]></Time>
+<TimeTick>1675754644</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="89" Source="login" SourceLine="28" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[2, 1]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:04]]></Time>
+<TimeTick>1675754644</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="91" Source="login" SourceLine="29" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:04]]></Time>
+<TimeTick>1675754644</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="93" Source="login" SourceLine="30" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[1270, 774]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:05]]></Time>
+<TimeTick>1675754645</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="95" Source="login" SourceLine="31" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Click]]></Disp>
+</NodeArgs>
+</Step>
+<HtmlStep rID="T44">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Checkpoint "Micro Focus MyFlight Sample Application_2": </span><span class="FailedHigh">Failed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 07-02-2023 - 12:54:05</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Text Checkpoint: captured </span><span  class="Failed">""</span><span  class="text"></span><span class="text">, expected </span><span  class="Passed">"Shilpa C"</span><span  class="text"><br>
+</span><span  class="text">Match case: ON<br>
+</span><span  class="text">Exact match: ON<br>
+</span><span  class="text">Ignore spaces: ON</span></body></html>]]></HTML>
+<TimeTick>1675754645</TimeTick>
+<NodeArgs eType="Verification" icon="5" nRep="96" status="Failed" Source="login" SourceLine="32" >
+<Disp><![CDATA[Checkpoint "Micro Focus MyFlight Sample Application_2"]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf2.xml]]></Path>
+<ASHilite><![CDATA[5772126]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[261, 460]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:05]]></Time>
+<TimeTick>1675754645</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="98" Source="login" SourceLine="33" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[-197, 108]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="100" Source="login" SourceLine="34" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Move]]></Obj>
+<Details plainTxt="False" ><![CDATA[78, 39]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="102" Source="login" SourceLine="35" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Move]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[ORDER]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object&nbsp;is&nbsp;disabled]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[ORDER]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Text = ORDER<br>devname = orderBtn<br>]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="104" status="Warning" nType="Description" Source="login" SourceLine="36" >
+<Disp><![CDATA[ORDER]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="103" status="Failed" nType="Run Error" Source="login" SourceLine="36" >
+<Disp><![CDATA[ORDER]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="86" status="Failed" Source="login" SourceLine="27" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object is disabled<BR/>Line (37): &quot;WpfWindow(&quot;Micro Focus MyFlight Sample&quot;).WpfButton(&quot;ORDER&quot;).Click&quot;. ]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:06]]></Time>
+<TimeTick>1675754646</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="106" status="Failed" Source="login" SourceLine="36" >
+<Disp><![CDATA[Run Error]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf4.xml]]></Path>
+<ASHilite><![CDATA[5772126]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[07-02-2023 - 12:54:16]]></Time>
+<TimeTick>1675754656</TimeTick>
+<NodeArgs eType="General" icon="14" nRep="107" status="Information" >
+<Disp><![CDATA[Stop Run]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="105" status="Failed" Source="login" SourceLine="36" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf3.xml]]></Path>
+<ASHilite><![CDATA[5772126]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="07-02-2023 - 12:53:42" eTime="07-02-2023 - 12:54:16" passed="0" failed="4" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[login Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[Demo_Checkpoint Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="07-02-2023 - 12:53:41" eTime="07-02-2023 - 12:54:16" passed="0" failed="4" warnings="1" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test Demo_Checkpoint Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

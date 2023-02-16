@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.1.3.0-UFT_14
+Project("") = "Descreptive_progaming", "Descreptive_progaming\Test.tsp", "09BBA853-2A18-449E-A0ED-690A5FBFA14F"
+	ProjectSection(ProjectMetadata) = HP.UFT.ProjectSystem.Dynamic.ProjectMetadata
+		PathInformation = C:\Users\SHCHATTI\Documents\Unified Functional Testing\Descreptive_progaming\Test.tsp
+		Keyword = QTP
+		OpenAsReadOnly = False
+		BaselineId = 
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		09BBA853-2A18-449E-A0ED-690A5FBFA14F.Debug|Any CPU.Build.0 = Debug|Any CPU
+		09BBA853-2A18-449E-A0ED-690A5FBFA14F.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		09BBA853-2A18-449E-A0ED-690A5FBFA14F.Release|Any CPU.Build.0 = Release|Any CPU
+		09BBA853-2A18-449E-A0ED-690A5FBFA14F.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
